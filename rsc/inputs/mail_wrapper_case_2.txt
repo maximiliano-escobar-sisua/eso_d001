@@ -1,0 +1,30 @@
+<html>
+
+<body>
+
+Here below are the roles and dates that could not be assigned by the optimization model:<br><br>
+
+<table border="1px">
+  <tr>
+    <th>Role</th>
+    <th>Date</th>
+  </tr>
+{0}
+</table>
+<br><br>
+
+The results of the automatic role assignation are as follows:<br><br> 
+
+<table border="1px">
+  <tr>
+    <th>Role</th>
+    <th>Start date</th>
+    <th>End date</th> 
+    <th>Name</th>
+    <th>Office</th>
+    <th>Room</th>
+  </tr>
+{1}
+</table>
+</body>
+</html>

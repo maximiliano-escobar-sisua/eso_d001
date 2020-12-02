@@ -1,0 +1,337 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="LOG_drop_updateFile" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mv="clr-namespace:Microsoft.VisualBasic;assembly=Microsoft.VisualBasic, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:s1="clr-namespace:System;assembly=mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sc="clr-namespace:System.Collections;assembly=mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xmlns:scg1="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xmlns:sd1="clr-namespace:System.Data;assembly=System.Data.DataSetExtensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xmlns:sd2="clr-namespace:System.Diagnostics;assembly=System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xmlns:sd3="clr-namespace:System.Drawing;assembly=System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" xmlns:si="clr-namespace:System.IO;assembly=mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xmlns:sl="clr-namespace:System.Linq;assembly=System.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xmlns:snm="clr-namespace:System.Net.Mail;assembly=System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xmlns:sx="clr-namespace:System.Xml;assembly=System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xmlns:sxl="clr-namespace:System.Xml.Linq;assembly=System.Xml.Linq, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xmlns:this="clr-namespace:" xmlns:uca="clr-namespace:UiPath.Cryptography.Activities;assembly=UiPath.Cryptography.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="_strProcessNameId" Type="InArgument(x:String)" />
+    <x:Property Name="_excSystemError" Type="InArgument(s:Exception)" />
+    <x:Property Name="_strProcessEnv" Type="InArgument(x:String)" />
+    <x:Property Name="_strProcessLastState" Type="InArgument(x:String)" />
+    <x:Property Name="_strExecutionLog" Type="InArgument(x:String)" />
+    <x:Property Name="_dtiProcessStartTime" Type="InArgument(s:DateTime)" />
+    <x:Property Name="_strarrEndDataLogDataIn" Type="InArgument(s:Object[])" />
+    <x:Property Name="_strStampFolderPath" Type="InArgument(x:String)" />
+    <x:Property Name="_strJSONFileName" Type="InArgument(x:String)" />
+    <x:Property Name="_strCodeConfigVar" Type="InArgument(x:String)" />
+    <x:Property Name="_boolOutputJSON" Type="InArgument(x:Boolean)" />
+  </x:Members>
+  <this:LOG_drop_updateFile._excSystemError>
+    <InArgument x:TypeArguments="s:Exception" />
+  </this:LOG_drop_updateFile._excSystemError>
+  <sap:VirtualizedContainerService.HintSize>797,3306</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <mva:VisualBasic.Settings>Assembly references and imported namespaces for internal implementation</mva:VisualBasic.Settings>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Activities</x:String>
+      <x:String>System.Collections</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>UiPath.Cryptography</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="drop_data_stamp" sap:VirtualizedContainerService.HintSize="777,3206" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="strFormatCodeLog" />
+      <Variable x:TypeArguments="x:String" Name="strFormatStartTimeLog" />
+      <Variable x:TypeArguments="x:String" Name="strFinalJSON" />
+      <Variable x:TypeArguments="x:String" Name="strFormatExecutionLog" />
+      <Variable x:TypeArguments="x:String" Name="strFormatDataLog" />
+      <Variable x:TypeArguments="x:String" Name="strFormatExecutionTimeLog" />
+      <Variable x:TypeArguments="x:String" Name="strFormatEndTimeLog" />
+      <Variable x:TypeArguments="x:String" Name="strFormatProcessName" />
+      <Variable x:TypeArguments="x:String" Name="strFormatException" />
+      <Variable x:TypeArguments="x:String" Name="strFormatEnvironment" />
+      <Variable x:TypeArguments="x:String" Name="strFormatProcessLastState" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg1:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg1:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Switch x:TypeArguments="x:Boolean" DisplayName="if_output_json" Expression="[_boolOutputJSON]" sap:VirtualizedContainerService.HintSize="735,3114" sap2010:WorkflowViewState.IdRef="Switch`1_1">
+      <Sequence x:Key="True" DisplayName="log_data_info" sap:VirtualizedContainerService.HintSize="695,2930" sap2010:WorkflowViewState.IdRef="Sequence_11">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg1:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg1:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <Sequence DisplayName="basic_log" sap:VirtualizedContainerService.HintSize="653,1192" sap2010:WorkflowViewState.IdRef="Sequence_10">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg1:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg1:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Assign DisplayName="set_process_name_id" sap:VirtualizedContainerService.HintSize="611,60" sap2010:WorkflowViewState.IdRef="Assign_32">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[strFormatProcessName]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[" ""process_name"" : """+_strProcessNameId+""","+System.Environment.Newline]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign DisplayName="set_process_environment" sap:VirtualizedContainerService.HintSize="611,60" sap2010:WorkflowViewState.IdRef="Assign_36">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[strFormatEnvironment]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[" ""process_env"" : """+_strProcessEnv+""","+System.Environment.Newline]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign DisplayName="set_start_time" sap:VirtualizedContainerService.HintSize="611,60" sap2010:WorkflowViewState.IdRef="Assign_10">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[strFormatStartTimeLog]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[" ""start_time"" : """+_dtiProcessStartTime.ToString("yyyyMMdd_HHmmss")+""","+System.Environment.Newline]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign DisplayName="set_execution_time" sap:VirtualizedContainerService.HintSize="611,60" sap2010:WorkflowViewState.IdRef="Assign_30">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[strFormatExecutionTimeLog]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[" ""execution_time"" : """+(new Datetime() +Datetime.Now.Subtract(_dtiProcessStartTime)).ToString("HHmmss")+""","+System.Environment.Newline]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign DisplayName="set_end_time" sap:VirtualizedContainerService.HintSize="611,60" sap2010:WorkflowViewState.IdRef="Assign_31">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[strFormatEndTimeLog]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[" ""end_time"" : """+Datetime.Now.ToString("yyyyMMdd_HHmmss")+""","+System.Environment.Newline]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign DisplayName="set_code_log" sap:VirtualizedContainerService.HintSize="611,60" sap2010:WorkflowViewState.IdRef="Assign_12">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[strFormatCodeLog]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[" ""code_log"" : """+_strCodeConfigVar+""","+System.Environment.Newline]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Sequence DisplayName="execution_log" sap:VirtualizedContainerService.HintSize="611,500" sap2010:WorkflowViewState.IdRef="Sequence_21">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg1:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg1:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Assign DisplayName="set_process_last_state" sap:VirtualizedContainerService.HintSize="569,60" sap2010:WorkflowViewState.IdRef="Assign_37">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[strFormatProcessLastState]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[" ""process_lastState"" : """+_strProcessLastState+""","+System.Environment.Newline]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign DisplayName="set_execution_log" sap:VirtualizedContainerService.HintSize="569,60" sap2010:WorkflowViewState.IdRef="Assign_26">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[strFormatExecutionLog]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[" ""execution_log"" : """+_strExecutionLog+""","+System.Environment.Newline]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <If Condition="[_excSystemError is nothing]" DisplayName="system_exeption_is_nothing" sap:VirtualizedContainerService.HintSize="569,208" sap2010:WorkflowViewState.IdRef="If_5">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg1:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg1:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If.Then>
+                <Assign DisplayName="set_execution_log" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_35">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[strFormatException]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">[" ""exception_log"" : """","+System.Environment.Newline]</InArgument>
+                  </Assign.Value>
+                </Assign>
+              </If.Then>
+              <If.Else>
+                <Assign DisplayName="set_execution_log" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_34">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[strFormatException]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">[" ""exception_log"" : """+_excSystemError.ToString.Replace(Environment.NewLine.ToCharArray()," | ").Replace(""""c,"'")+""","+System.Environment.Newline]</InArgument>
+                  </Assign.Value>
+                </Assign>
+              </If.Else>
+            </If>
+          </Sequence>
+        </Sequence>
+        <Sequence DisplayName="log_data" sap:VirtualizedContainerService.HintSize="653,883" sap2010:WorkflowViewState.IdRef="Sequence_20">
+          <Sequence.Variables>
+            <Variable x:TypeArguments="x:String" Name="strItemName" />
+          </Sequence.Variables>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg1:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg1:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Assign DisplayName="set_item_name" sap:VirtualizedContainerService.HintSize="611,60" sap2010:WorkflowViewState.IdRef="Assign_15">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[strItemName]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">processData_log</InArgument>
+            </Assign.Value>
+          </Assign>
+          <If Condition="[_strarrEndDataLogDataIn isNot Nothing]" DisplayName="data_in_exists" sap:VirtualizedContainerService.HintSize="611,691" sap2010:WorkflowViewState.IdRef="If_4">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg1:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg1:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <If.Then>
+              <Sequence DisplayName="save_data" sap:VirtualizedContainerService.HintSize="304,543" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                <Sequence.Variables>
+                  <Variable x:TypeArguments="x:Int32" Name="int_dataIDX" />
+                </Sequence.Variables>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg1:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg1:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <Assign DisplayName="init_str" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_16">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[strFormatDataLog]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">[" """+strItemName+""" : {"+System.Environment.Newline]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="[int_dataIDX]" DisplayName="fe_stamp_item" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[_strarrEndDataLogDataIn]">
+                  <ui:ForEach.Body>
+                    <ActivityAction x:TypeArguments="x:Object">
+                      <ActivityAction.Argument>
+                        <DelegateInArgument x:TypeArguments="x:Object" Name="itemCol" />
+                      </ActivityAction.Argument>
+                      <Sequence DisplayName="set_format" sap:VirtualizedContainerService.HintSize="531,332" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg1:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg1:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <If Condition="[_strarrEndDataLogDataIn(int_dataIDX) isnot nothing]" DisplayName="strarr_datalog_DATA_IN(int_dataIDX) isnot nothing" sap:VirtualizedContainerService.HintSize="509,208" sap2010:WorkflowViewState.IdRef="If_2">
+                          <If.Then>
+                            <Assign DisplayName="add_new_item" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_17">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:String">[strFormatDataLog]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:String">[strFormatDataLog+" """+itemCol.ToString+""": """+_strarrEndDataLogDataIn(int_dataIDX).ToString+""","]</InArgument>
+                              </Assign.Value>
+                            </Assign>
+                          </If.Then>
+                          <If.Else>
+                            <Assign DisplayName="add_empty_item" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_28">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:String">[strFormatDataLog]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:String">[strFormatDataLog+" """+itemCol.ToString+""": """","]</InArgument>
+                              </Assign.Value>
+                            </Assign>
+                          </If.Else>
+                        </If>
+                      </Sequence>
+                    </ActivityAction>
+                  </ui:ForEach.Body>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg1:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg1:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:ForEach>
+                <Assign DisplayName="delete_last_char(&quot;,&quot;)" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_18">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[strFormatDataLog]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">[strFormatDataLog.Substring(0, strFormatDataLog.Length)]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign DisplayName="replace_arr_format" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_19">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[strFormatDataLog]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">[strFormatDataLog.Replace(",",","+System.Environment.Newline)+System.Environment.Newline]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign DisplayName="init_str" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_20">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[strFormatDataLog]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">[strFormatDataLog+" }"+System.Environment.Newline]</InArgument>
+                  </Assign.Value>
+                </Assign>
+              </Sequence>
+            </If.Then>
+            <If.Else>
+              <Assign DisplayName="no_data_str" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_33">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[strFormatDataLog]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[" """+strItemName+""" : """""+System.Environment.Newline]</InArgument>
+                </Assign.Value>
+              </Assign>
+            </If.Else>
+          </If>
+        </Sequence>
+        <Sequence DisplayName="build_json" sap:VirtualizedContainerService.HintSize="653,683" sap2010:WorkflowViewState.IdRef="Sequence_14">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg1:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg1:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Assign DisplayName="json_data" sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_27">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[strFinalJSON]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">["{"+System.Environment.Newline+strFormatProcessName+strFormatEnvironment+strFormatStartTimeLog+strFormatExecutionTimeLog+strFormatEndTimeLog+strFormatExecutionLog+strFormatProcessLastState+strFormatException+strFormatCodeLog+strFormatDataLog+" }"]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <WriteLine DisplayName="format_" sap:VirtualizedContainerService.HintSize="334,61" sap2010:WorkflowViewState.IdRef="WriteLine_8" Text="-----------------------------" />
+          <WriteLine DisplayName="format_info" sap:VirtualizedContainerService.HintSize="334,61" sap2010:WorkflowViewState.IdRef="WriteLine_9" Text="[&quot;Folder: &lt;&quot;+_strStampFolderPath+_strJSONFileName+&quot;&gt;&quot;]" />
+          <WriteLine DisplayName="format_info" sap:VirtualizedContainerService.HintSize="334,61" sap2010:WorkflowViewState.IdRef="WriteLine_7" Text="[&quot;stamp_data: &quot;+strFinalJSON]" />
+          <WriteLine DisplayName="format_" sap:VirtualizedContainerService.HintSize="334,61" sap2010:WorkflowViewState.IdRef="WriteLine_10" Text="-----------------------------" />
+          <ui:WriteTextFile DisplayName="save_endlog_stamp" FileName="[_strStampFolderPath+_strJSONFileName]" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="WriteTextFile_2" Text="[strFinalJSON]">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg1:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg1:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:WriteTextFile>
+        </Sequence>
+      </Sequence>
+    </Switch>
+  </Sequence>
+</Activity>

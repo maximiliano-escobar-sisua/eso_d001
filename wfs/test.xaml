@@ -1,0 +1,1016 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="test" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1160,5782" sap2010:WorkflowViewState.IdRef="test_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="30">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="26">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.CV</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>UiPath.Python</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="test" sap:VirtualizedContainerService.HintSize="1078,5677" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="sd:DataTable" Name="dtaTest" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dtaRoleList" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dtaWorkerIndex" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dtaRoleIndex" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dtaAllocation" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dtaOfficesRooms" />
+      <Variable x:TypeArguments="x:String" Name="strWorkerName" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dtaAuxiliary" />
+      <Variable x:TypeArguments="x:Int32" Name="intCount" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dtaFinalList" />
+      <Variable x:TypeArguments="x:String" Name="strText" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dtaMail" />
+      <Variable x:TypeArguments="x:String" Name="strHtmlTable" />
+      <Variable x:TypeArguments="x:String" Name="strMailBody" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="1036,359" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" Visible="False" WorkbookPath="C:\Users\bcerda\Documents\UiPath\p001_asignación_de_roles\rsc\inputs\base.xlsx">
+      <ui:ExcelApplicationScope.Body>
+        <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,250" sap2010:WorkflowViewState.IdRef="Sequence_4">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:ExcelReadRange AddHeaders="True" DataTable="[dtaOfficesRooms]" DisplayName="rr_offices_rooms" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" SheetName="Offices_Rooms" UseFilter="True">
+              <ui:ExcelReadRange.Range>
+                <InArgument x:TypeArguments="x:String">
+                  <Literal x:TypeArguments="x:String" Value="" />
+                </InArgument>
+              </ui:ExcelReadRange.Range>
+            </ui:ExcelReadRange>
+            <ui:ExcelReadRange AddHeaders="True" DataTable="[dtaRoleList]" DisplayName="read_role_list_rpa" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="ExcelReadRange_2" SheetName="Role_List_RPA" UseFilter="True">
+              <ui:ExcelReadRange.Range>
+                <InArgument x:TypeArguments="x:String">
+                  <Literal x:TypeArguments="x:String" Value="" />
+                </InArgument>
+              </ui:ExcelReadRange.Range>
+            </ui:ExcelReadRange>
+          </Sequence>
+        </ActivityAction>
+      </ui:ExcelApplicationScope.Body>
+    </ui:ExcelApplicationScope>
+    <ui:ReadRange AddHeaders="True" DataTable="[dtaWorkerIndex]" DisplayName="read_workers_index" sap:VirtualizedContainerService.HintSize="1036,87" sap2010:WorkflowViewState.IdRef="ReadRange_2" SheetName="base" WorkbookPath="C:\Users\bcerda\Documents\UiPath\p001_asignación_de_roles\out\workers_indexes.xlsx">
+      <ui:ReadRange.Range>
+        <InArgument x:TypeArguments="x:String">
+          <Literal x:TypeArguments="x:String" Value="" />
+        </InArgument>
+      </ui:ReadRange.Range>
+    </ui:ReadRange>
+    <ui:ReadRange AddHeaders="True" DataTable="[dtaRoleIndex]" DisplayName="read_role_index" sap:VirtualizedContainerService.HintSize="1036,87" sap2010:WorkflowViewState.IdRef="ReadRange_3" SheetName="base" WorkbookPath="C:\Users\bcerda\Documents\UiPath\p001_asignación_de_roles\rsc\inputs\roles_indexes.xlsx">
+      <ui:ReadRange.Range>
+        <InArgument x:TypeArguments="x:String">
+          <Literal x:TypeArguments="x:String" Value="" />
+        </InArgument>
+      </ui:ReadRange.Range>
+    </ui:ReadRange>
+    <ui:ReadRange AddHeaders="True" DataTable="[dtaAllocation]" DisplayName="read_eso_role_allocation" sap:VirtualizedContainerService.HintSize="1036,87" sap2010:WorkflowViewState.IdRef="ReadRange_4" SheetName="base" WorkbookPath="C:\Users\bcerda\Documents\UiPath\p001_asignación_de_roles\out\eso_role_allocation.xlsx">
+      <ui:ReadRange.Range>
+        <InArgument x:TypeArguments="x:String">
+          <Literal x:TypeArguments="x:String" Value="" />
+        </InArgument>
+      </ui:ReadRange.Range>
+    </ui:ReadRange>
+    <ui:SortDataTable ColumnIndex="{x:Null}" DataColumn="{x:Null}" ColumnName="day" DataTable="[dtaAllocation]" DisplayName="sort_data_table_by_name" sap:VirtualizedContainerService.HintSize="1036,22" sap2010:WorkflowViewState.IdRef="SortDataTable_1" Order="Ascending" OutputDataTable="[dtaAllocation]" SortOrder="Ascending" />
+    <ui:SortDataTable ColumnIndex="{x:Null}" DataColumn="{x:Null}" ColumnName="worker" DataTable="[dtaAllocation]" DisplayName="Sort Data Table" sap:VirtualizedContainerService.HintSize="1036,22" sap2010:WorkflowViewState.IdRef="SortDataTable_2" Order="Ascending" OutputDataTable="[dtaAllocation]" SortOrder="Ascending" />
+    <ui:AddDataColumn x:TypeArguments="x:String" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="name" DataTable="[dtaAllocation]" DisplayName="add_column_name" sap:VirtualizedContainerService.HintSize="1036,22" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_1" />
+    <ui:AddDataColumn x:TypeArguments="x:String" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="office" DataTable="[dtaAllocation]" DisplayName="add_column_office" sap:VirtualizedContainerService.HintSize="1036,22" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_2" />
+    <ui:AddDataColumn x:TypeArguments="x:String" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="room" DataTable="[dtaAllocation]" DisplayName="add_column_room" sap:VirtualizedContainerService.HintSize="1036,22" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_3" />
+    <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[dtaAllocation]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="1036,864" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+      <ui:ForEachRow.Body>
+        <ActivityAction x:TypeArguments="sd:DataRow">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="526,716" sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:Int32" Name="intNameIndex" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:LookupDataTable LookupColumnName="{x:Null}" LookupDataColumn="{x:Null}" RowIndex="{x:Null}" TargetColumnName="{x:Null}" TargetDataColumn="{x:Null}" DataTable="[dtaWorkerIndex]" DisplayName="Lookup Data Table" sap:VirtualizedContainerService.HintSize="484,22" sap2010:WorkflowViewState.IdRef="LookupDataTable_1" LookupColumnIndex="[1]" LookupValue="[row(&quot;worker&quot;).ToString]" TargetColumnIndex="[0]">
+              <ui:LookupDataTable.CellValue>
+                <OutArgument x:TypeArguments="x:String">[strWorkerName]</OutArgument>
+              </ui:LookupDataTable.CellValue>
+            </ui:LookupDataTable>
+            <ui:LookupDataTable CellValue="{x:Null}" LookupColumnName="{x:Null}" LookupDataColumn="{x:Null}" TargetColumnIndex="{x:Null}" TargetColumnName="{x:Null}" TargetDataColumn="{x:Null}" DataTable="[dtaOfficesRooms]" DisplayName="Lookup Data Table" sap:VirtualizedContainerService.HintSize="484,22" sap2010:WorkflowViewState.IdRef="LookupDataTable_2" LookupColumnIndex="[0]" LookupValue="[strWorkerName]" RowIndex="[intNameIndex]" />
+            <Assign sap:VirtualizedContainerService.HintSize="484,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Object">[row("name")]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Object">[strWorkerName]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <If Condition="[intNameIndex &gt;= 0]" sap:VirtualizedContainerService.HintSize="484,400" sap2010:WorkflowViewState.IdRef="If_1">
+              <If.Then>
+                <Sequence sap:VirtualizedContainerService.HintSize="304,252" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Object">[row("office")]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Object">[dtaOfficesRooms(intNameIndex)(1)]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Object">[row("room")]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Object">[dtaOfficesRooms(intNameIndex)(2)]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </Sequence>
+              </If.Then>
+            </If>
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEachRow.Body>
+    </ui:ForEachRow>
+    <ui:BuildDataTable DataTable="[dtaFinalList]" DisplayName="build_role_list_dta" sap:VirtualizedContainerService.HintSize="1036,59" sap2010:WorkflowViewState.IdRef="BuildDataTable_2" TableInfo="&lt;NewDataSet&gt;&#xD;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xD;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xD;&#xA;      &lt;xs:complexType&gt;&#xD;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xD;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xD;&#xA;            &lt;xs:complexType&gt;&#xD;&#xA;              &lt;xs:sequence&gt;&#xD;&#xA;                &lt;xs:element name=&quot;role&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;start_date&quot; minOccurs=&quot;0&quot;&gt;&#xD;&#xA;                  &lt;xs:simpleType&gt;&#xD;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xD;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xD;&#xA;                    &lt;/xs:restriction&gt;&#xD;&#xA;                  &lt;/xs:simpleType&gt;&#xD;&#xA;                &lt;/xs:element&gt;&#xD;&#xA;                &lt;xs:element name=&quot;end_date&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;name&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;office&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;room&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;              &lt;/xs:sequence&gt;&#xD;&#xA;            &lt;/xs:complexType&gt;&#xD;&#xA;          &lt;/xs:element&gt;&#xD;&#xA;        &lt;/xs:choice&gt;&#xD;&#xA;      &lt;/xs:complexType&gt;&#xD;&#xA;    &lt;/xs:element&gt;&#xD;&#xA;  &lt;/xs:schema&gt;&#xD;&#xA;&lt;/NewDataSet&gt;" />
+    <ui:ForEach x:TypeArguments="x:Int32" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="1036,2069" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[enumerable.Range(0,9)]">
+      <ui:ForEach.Body>
+        <ActivityAction x:TypeArguments="x:Int32">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Int32" Name="item" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="1000,1935" sap2010:WorkflowViewState.IdRef="Sequence_7">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:FilterDataTable DataTable="[dtaAllocation]" DisplayName="filter_allocation_table " FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="958,59" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[dtaAuxiliary]" SelectColumnsMode="Keep">
+              <ui:FilterDataTable.Filters>
+                <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+                  <ui:FilterOperationArgument BooleanOperator="And" Operator="EQ">
+                    <ui:FilterOperationArgument.Column>
+                      <InArgument x:TypeArguments="x:String">["role"]</InArgument>
+                    </ui:FilterOperationArgument.Column>
+                    <ui:FilterOperationArgument.Operand>
+                      <InArgument x:TypeArguments="x:Object">[item]</InArgument>
+                    </ui:FilterOperationArgument.Operand>
+                  </ui:FilterOperationArgument>
+                </scg:List>
+              </ui:FilterDataTable.Filters>
+              <ui:FilterDataTable.SelectColumns>
+                <scg:List x:TypeArguments="InArgument" Capacity="4">
+                  <x:Null />
+                </scg:List>
+              </ui:FilterDataTable.SelectColumns>
+            </ui:FilterDataTable>
+            <Switch x:TypeArguments="x:Int32" DisplayName="Switch" Expression="[item]" sap:VirtualizedContainerService.HintSize="958,1682" sap2010:WorkflowViewState.IdRef="Switch`1_1">
+              <Sequence x:Key="0" sap:VirtualizedContainerService.HintSize="918,1281" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:ForEach x:TypeArguments="x:Int32" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="876,1230" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[Enumerable.Range(0,dtaAuxiliary.rows.Count)]">
+                  <ui:ForEach.Body>
+                    <ActivityAction x:TypeArguments="x:Int32">
+                      <ActivityAction.Argument>
+                        <DelegateInArgument x:TypeArguments="x:Int32" Name="i" />
+                      </ActivityAction.Argument>
+                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="840,1096" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <If Condition="[i = 0]" sap:VirtualizedContainerService.HintSize="798,1004" sap2010:WorkflowViewState.IdRef="If_7">
+                          <If.Else>
+                            <Sequence sap:VirtualizedContainerService.HintSize="653,856" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <If Condition="[Cint(dtaAuxiliary.rows(i)(&quot;worker&quot;)) = Cint(dtaAuxiliary.rows(i-1)(&quot;worker&quot;)) and Cint(dtaAuxiliary.Rows(i)(&quot;day&quot;)) = Cint(dtaAuxiliary.Rows(i-1)(&quot;day&quot;))+1]" sap:VirtualizedContainerService.HintSize="611,362" sap2010:WorkflowViewState.IdRef="If_5">
+                                <If.Then>
+                                  <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_7">
+                                    <Assign.To>
+                                      <OutArgument x:TypeArguments="x:Int32">[intCount]</OutArgument>
+                                    </Assign.To>
+                                    <Assign.Value>
+                                      <InArgument x:TypeArguments="x:Int32">[intCount + 1]</InArgument>
+                                    </Assign.Value>
+                                  </Assign>
+                                </If.Then>
+                                <If.Else>
+                                  <Sequence sap:VirtualizedContainerService.HintSize="304,214" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{&quot;COE&quot;,(Cint(dtaAuxiliary.rows(i-1)(&quot;day&quot;))+1-intCount).ToString + &quot;/&quot; + date.Now.AddMonths(2).ToString(&quot;MMM&quot;),(Cint(dtaAuxiliary.rows(i-1)(&quot;day&quot;))+1).ToString + &quot;/&quot; + date.now.AddMonths(2).ToString(&quot;MMM&quot;),dtaAuxiliary.rows(i-1)(&quot;name&quot;).ToString,dtaAuxiliary.rows(i-1)(&quot;office&quot;).ToString,dtaAuxiliary.rows(i-1)(&quot;room&quot;).ToString}]" DataTable="[dtaFinalList]" DisplayName="add_work_shift" sap:VirtualizedContainerService.HintSize="262,22" sap2010:WorkflowViewState.IdRef="AddDataRow_15" />
+                                    <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_8">
+                                      <Assign.To>
+                                        <OutArgument x:TypeArguments="x:Int32">[intCount]</OutArgument>
+                                      </Assign.To>
+                                      <Assign.Value>
+                                        <InArgument x:TypeArguments="x:Int32">0</InArgument>
+                                      </Assign.Value>
+                                    </Assign>
+                                  </Sequence>
+                                </If.Else>
+                              </If>
+                              <If Condition="[i = dtaAuxiliary.rows.Count-1 and Cint(dtaAuxiliary.rows(i)(&quot;worker&quot;)) = Cint(dtaAuxiliary.rows(i-1)(&quot;worker&quot;)) and Cint(dtaAuxiliary.Rows(i)(&quot;day&quot;)) = Cint(dtaAuxiliary.Rows(i-1)(&quot;day&quot;))+1]" sap:VirtualizedContainerService.HintSize="611,362" sap2010:WorkflowViewState.IdRef="If_6">
+                                <If.Then>
+                                  <Sequence sap:VirtualizedContainerService.HintSize="304,214" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{&quot;COE&quot;,(Cint(dtaAuxiliary.rows(i-1)(&quot;day&quot;))+1-intCount).ToString + &quot;/&quot; + date.Now.AddMonths(2).ToString(&quot;MMM&quot;),(Cint(dtaAuxiliary.rows(i)(&quot;day&quot;))+1).ToString + &quot;/&quot; + date.now.AddMonths(2).ToString(&quot;MMM&quot;),dtaAuxiliary.rows(i)(&quot;name&quot;).ToString,dtaAuxiliary.rows(i)(&quot;office&quot;).ToString,dtaAuxiliary.rows(i)(&quot;room&quot;).ToString}]" DataTable="[dtaFinalList]" DisplayName="add_work_shift" sap:VirtualizedContainerService.HintSize="262,22" sap2010:WorkflowViewState.IdRef="AddDataRow_16" />
+                                    <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_9">
+                                      <Assign.To>
+                                        <OutArgument x:TypeArguments="x:Int32">[intCount]</OutArgument>
+                                      </Assign.To>
+                                      <Assign.Value>
+                                        <InArgument x:TypeArguments="x:Int32">0</InArgument>
+                                      </Assign.Value>
+                                    </Assign>
+                                  </Sequence>
+                                </If.Then>
+                              </If>
+                            </Sequence>
+                          </If.Else>
+                        </If>
+                      </Sequence>
+                    </ActivityAction>
+                  </ui:ForEach.Body>
+                </ui:ForEach>
+              </Sequence>
+              <Sequence x:Key="1" sap:VirtualizedContainerService.HintSize="918,1322" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:ForEach x:TypeArguments="x:Int32" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="876,1230" sap2010:WorkflowViewState.IdRef="ForEach`1_4" Values="[Enumerable.Range(0,dtaAuxiliary.rows.Count)]">
+                  <ui:ForEach.Body>
+                    <ActivityAction x:TypeArguments="x:Int32">
+                      <ActivityAction.Argument>
+                        <DelegateInArgument x:TypeArguments="x:Int32" Name="i" />
+                      </ActivityAction.Argument>
+                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="840,1096" sap2010:WorkflowViewState.IdRef="Sequence_23">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <If Condition="[i = 0]" sap:VirtualizedContainerService.HintSize="798,1004" sap2010:WorkflowViewState.IdRef="If_10">
+                          <If.Else>
+                            <Sequence sap:VirtualizedContainerService.HintSize="653,856" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <If Condition="[Cint(dtaAuxiliary.rows(i)(&quot;worker&quot;)) = Cint(dtaAuxiliary.rows(i-1)(&quot;worker&quot;)) and Cint(dtaAuxiliary.Rows(i)(&quot;day&quot;)) = Cint(dtaAuxiliary.Rows(i-1)(&quot;day&quot;))+1]" sap:VirtualizedContainerService.HintSize="611,362" sap2010:WorkflowViewState.IdRef="If_8">
+                                <If.Then>
+                                  <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_10">
+                                    <Assign.To>
+                                      <OutArgument x:TypeArguments="x:Int32">[intCount]</OutArgument>
+                                    </Assign.To>
+                                    <Assign.Value>
+                                      <InArgument x:TypeArguments="x:Int32">[intCount + 1]</InArgument>
+                                    </Assign.Value>
+                                  </Assign>
+                                </If.Then>
+                                <If.Else>
+                                  <Sequence sap:VirtualizedContainerService.HintSize="304,214" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{&quot;TCO&quot;,(Cint(dtaAuxiliary.rows(i-1)(&quot;day&quot;))+1-intCount).ToString + &quot;/&quot; + date.Now.AddMonths(2).ToString(&quot;MMM&quot;),(Cint(dtaAuxiliary.rows(i-1)(&quot;day&quot;))+1).ToString + &quot;/&quot; + date.now.AddMonths(2).ToString(&quot;MMM&quot;),dtaAuxiliary.rows(i-1)(&quot;name&quot;).ToString,dtaAuxiliary.rows(i-1)(&quot;office&quot;).ToString,dtaAuxiliary.rows(i-1)(&quot;room&quot;).ToString}]" DataTable="[dtaFinalList]" DisplayName="add_work_shift" sap:VirtualizedContainerService.HintSize="262,22" sap2010:WorkflowViewState.IdRef="AddDataRow_17" />
+                                    <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_11">
+                                      <Assign.To>
+                                        <OutArgument x:TypeArguments="x:Int32">[intCount]</OutArgument>
+                                      </Assign.To>
+                                      <Assign.Value>
+                                        <InArgument x:TypeArguments="x:Int32">0</InArgument>
+                                      </Assign.Value>
+                                    </Assign>
+                                  </Sequence>
+                                </If.Else>
+                              </If>
+                              <If Condition="[i = dtaAuxiliary.rows.Count-1 and Cint(dtaAuxiliary.rows(i)(&quot;worker&quot;)) = Cint(dtaAuxiliary.rows(i-1)(&quot;worker&quot;)) and Cint(dtaAuxiliary.Rows(i)(&quot;day&quot;)) = Cint(dtaAuxiliary.Rows(i-1)(&quot;day&quot;))+1]" sap:VirtualizedContainerService.HintSize="611,362" sap2010:WorkflowViewState.IdRef="If_9">
+                                <If.Then>
+                                  <Sequence sap:VirtualizedContainerService.HintSize="304,214" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{&quot;TCO&quot;,(Cint(dtaAuxiliary.rows(i-1)(&quot;day&quot;))+1-intCount).ToString + &quot;/&quot; + date.Now.AddMonths(2).ToString(&quot;MMM&quot;),(Cint(dtaAuxiliary.rows(i)(&quot;day&quot;))+1).ToString + &quot;/&quot; + date.now.AddMonths(2).ToString(&quot;MMM&quot;),dtaAuxiliary.rows(i)(&quot;name&quot;).ToString,dtaAuxiliary.rows(i)(&quot;office&quot;).ToString,dtaAuxiliary.rows(i)(&quot;room&quot;).ToString}]" DataTable="[dtaFinalList]" DisplayName="add_work_shift" sap:VirtualizedContainerService.HintSize="262,22" sap2010:WorkflowViewState.IdRef="AddDataRow_18" />
+                                    <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_12">
+                                      <Assign.To>
+                                        <OutArgument x:TypeArguments="x:Int32">[intCount]</OutArgument>
+                                      </Assign.To>
+                                      <Assign.Value>
+                                        <InArgument x:TypeArguments="x:Int32">0</InArgument>
+                                      </Assign.Value>
+                                    </Assign>
+                                  </Sequence>
+                                </If.Then>
+                              </If>
+                            </Sequence>
+                          </If.Else>
+                        </If>
+                      </Sequence>
+                    </ActivityAction>
+                  </ui:ForEach.Body>
+                </ui:ForEach>
+              </Sequence>
+              <Sequence x:Key="2" sap:VirtualizedContainerService.HintSize="918,1281" sap2010:WorkflowViewState.IdRef="Sequence_28">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:ForEach x:TypeArguments="x:Int32" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="876,1230" sap2010:WorkflowViewState.IdRef="ForEach`1_5" Values="[Enumerable.Range(0,dtaAuxiliary.rows.Count)]">
+                  <ui:ForEach.Body>
+                    <ActivityAction x:TypeArguments="x:Int32">
+                      <ActivityAction.Argument>
+                        <DelegateInArgument x:TypeArguments="x:Int32" Name="i" />
+                      </ActivityAction.Argument>
+                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="840,1096" sap2010:WorkflowViewState.IdRef="Sequence_27">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <If Condition="[i = 0]" sap:VirtualizedContainerService.HintSize="798,1004" sap2010:WorkflowViewState.IdRef="If_13">
+                          <If.Else>
+                            <Sequence sap:VirtualizedContainerService.HintSize="653,856" sap2010:WorkflowViewState.IdRef="Sequence_26">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <If Condition="[Cint(dtaAuxiliary.rows(i)(&quot;worker&quot;)) = Cint(dtaAuxiliary.rows(i-1)(&quot;worker&quot;)) and Cint(dtaAuxiliary.Rows(i)(&quot;day&quot;)) = Cint(dtaAuxiliary.Rows(i-1)(&quot;day&quot;))+1]" sap:VirtualizedContainerService.HintSize="611,362" sap2010:WorkflowViewState.IdRef="If_11">
+                                <If.Then>
+                                  <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_13">
+                                    <Assign.To>
+                                      <OutArgument x:TypeArguments="x:Int32">[intCount]</OutArgument>
+                                    </Assign.To>
+                                    <Assign.Value>
+                                      <InArgument x:TypeArguments="x:Int32">[intCount + 1]</InArgument>
+                                    </Assign.Value>
+                                  </Assign>
+                                </If.Then>
+                                <If.Else>
+                                  <Sequence sap:VirtualizedContainerService.HintSize="304,214" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{&quot;UT1&quot;,(Cint(dtaAuxiliary.rows(i-1)(&quot;day&quot;))+1-intCount).ToString + &quot;/&quot; + date.Now.AddMonths(2).ToString(&quot;MMM&quot;),(Cint(dtaAuxiliary.rows(i-1)(&quot;day&quot;))+1).ToString + &quot;/&quot; + date.now.AddMonths(2).ToString(&quot;MMM&quot;),dtaAuxiliary.rows(i-1)(&quot;name&quot;).ToString,dtaAuxiliary.rows(i-1)(&quot;office&quot;).ToString,dtaAuxiliary.rows(i-1)(&quot;room&quot;).ToString}]" DataTable="[dtaFinalList]" DisplayName="add_work_shift" sap:VirtualizedContainerService.HintSize="262,22" sap2010:WorkflowViewState.IdRef="AddDataRow_19" />
+                                    <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_14">
+                                      <Assign.To>
+                                        <OutArgument x:TypeArguments="x:Int32">[intCount]</OutArgument>
+                                      </Assign.To>
+                                      <Assign.Value>
+                                        <InArgument x:TypeArguments="x:Int32">0</InArgument>
+                                      </Assign.Value>
+                                    </Assign>
+                                  </Sequence>
+                                </If.Else>
+                              </If>
+                              <If Condition="[i = dtaAuxiliary.rows.Count-1 and Cint(dtaAuxiliary.rows(i)(&quot;worker&quot;)) = Cint(dtaAuxiliary.rows(i-1)(&quot;worker&quot;)) and Cint(dtaAuxiliary.Rows(i)(&quot;day&quot;)) = Cint(dtaAuxiliary.Rows(i-1)(&quot;day&quot;))+1]" sap:VirtualizedContainerService.HintSize="611,362" sap2010:WorkflowViewState.IdRef="If_12">
+                                <If.Then>
+                                  <Sequence sap:VirtualizedContainerService.HintSize="304,214" sap2010:WorkflowViewState.IdRef="Sequence_25">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{&quot;UT1&quot;,(Cint(dtaAuxiliary.rows(i-1)(&quot;day&quot;))+1-intCount).ToString + &quot;/&quot; + date.Now.AddMonths(2).ToString(&quot;MMM&quot;),(Cint(dtaAuxiliary.rows(i)(&quot;day&quot;))+1).ToString + &quot;/&quot; + date.now.AddMonths(2).ToString(&quot;MMM&quot;),dtaAuxiliary.rows(i)(&quot;name&quot;).ToString,dtaAuxiliary.rows(i)(&quot;office&quot;).ToString,dtaAuxiliary.rows(i)(&quot;room&quot;).ToString}]" DataTable="[dtaFinalList]" DisplayName="add_work_shift" sap:VirtualizedContainerService.HintSize="262,22" sap2010:WorkflowViewState.IdRef="AddDataRow_20" />
+                                    <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_15">
+                                      <Assign.To>
+                                        <OutArgument x:TypeArguments="x:Int32">[intCount]</OutArgument>
+                                      </Assign.To>
+                                      <Assign.Value>
+                                        <InArgument x:TypeArguments="x:Int32">0</InArgument>
+                                      </Assign.Value>
+                                    </Assign>
+                                  </Sequence>
+                                </If.Then>
+                              </If>
+                            </Sequence>
+                          </If.Else>
+                        </If>
+                      </Sequence>
+                    </ActivityAction>
+                  </ui:ForEach.Body>
+                </ui:ForEach>
+              </Sequence>
+              <ui:ForEach x:TypeArguments="x:Int32" CurrentIndex="{x:Null}" x:Key="3" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="876,1230" sap2010:WorkflowViewState.IdRef="ForEach`1_6" Values="[Enumerable.Range(0,dtaAuxiliary.rows.Count)]">
+                <ui:ForEach.Body>
+                  <ActivityAction x:TypeArguments="x:Int32">
+                    <ActivityAction.Argument>
+                      <DelegateInArgument x:TypeArguments="x:Int32" Name="i" />
+                    </ActivityAction.Argument>
+                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="840,1096" sap2010:WorkflowViewState.IdRef="Sequence_32">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <If Condition="[i = 0]" sap:VirtualizedContainerService.HintSize="798,1004" sap2010:WorkflowViewState.IdRef="If_16">
+                        <If.Else>
+                          <Sequence sap:VirtualizedContainerService.HintSize="653,856" sap2010:WorkflowViewState.IdRef="Sequence_31">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <If Condition="[Cint(dtaAuxiliary.rows(i)(&quot;worker&quot;)) = Cint(dtaAuxiliary.rows(i-1)(&quot;worker&quot;)) and Cint(dtaAuxiliary.Rows(i)(&quot;day&quot;)) = Cint(dtaAuxiliary.Rows(i-1)(&quot;day&quot;))+1]" sap:VirtualizedContainerService.HintSize="611,362" sap2010:WorkflowViewState.IdRef="If_14">
+                              <If.Then>
+                                <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_16">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:Int32">[intCount]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:Int32">[intCount + 1]</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                              </If.Then>
+                              <If.Else>
+                                <Sequence sap:VirtualizedContainerService.HintSize="304,214" sap2010:WorkflowViewState.IdRef="Sequence_29">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{&quot;UT2&quot;,(Cint(dtaAuxiliary.rows(i-1)(&quot;day&quot;))+1-intCount).ToString + &quot;/&quot; + date.Now.AddMonths(2).ToString(&quot;MMM&quot;),(Cint(dtaAuxiliary.rows(i-1)(&quot;day&quot;))+1).ToString + &quot;/&quot; + date.now.AddMonths(2).ToString(&quot;MMM&quot;),dtaAuxiliary.rows(i-1)(&quot;name&quot;).ToString,dtaAuxiliary.rows(i-1)(&quot;office&quot;).ToString,dtaAuxiliary.rows(i-1)(&quot;room&quot;).ToString}]" DataTable="[dtaFinalList]" DisplayName="add_work_shift" sap:VirtualizedContainerService.HintSize="262,22" sap2010:WorkflowViewState.IdRef="AddDataRow_21" />
+                                  <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_17">
+                                    <Assign.To>
+                                      <OutArgument x:TypeArguments="x:Int32">[intCount]</OutArgument>
+                                    </Assign.To>
+                                    <Assign.Value>
+                                      <InArgument x:TypeArguments="x:Int32">0</InArgument>
+                                    </Assign.Value>
+                                  </Assign>
+                                </Sequence>
+                              </If.Else>
+                            </If>
+                            <If Condition="[i = dtaAuxiliary.rows.Count-1 and Cint(dtaAuxiliary.rows(i)(&quot;worker&quot;)) = Cint(dtaAuxiliary.rows(i-1)(&quot;worker&quot;)) and Cint(dtaAuxiliary.Rows(i)(&quot;day&quot;)) = Cint(dtaAuxiliary.Rows(i-1)(&quot;day&quot;))+1]" sap:VirtualizedContainerService.HintSize="611,362" sap2010:WorkflowViewState.IdRef="If_15">
+                              <If.Then>
+                                <Sequence sap:VirtualizedContainerService.HintSize="304,214" sap2010:WorkflowViewState.IdRef="Sequence_30">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{&quot;UT2&quot;,(Cint(dtaAuxiliary.rows(i-1)(&quot;day&quot;))+1-intCount).ToString + &quot;/&quot; + date.Now.AddMonths(2).ToString(&quot;MMM&quot;),(Cint(dtaAuxiliary.rows(i)(&quot;day&quot;))+1).ToString + &quot;/&quot; + date.now.AddMonths(2).ToString(&quot;MMM&quot;),dtaAuxiliary.rows(i)(&quot;name&quot;).ToString,dtaAuxiliary.rows(i)(&quot;office&quot;).ToString,dtaAuxiliary.rows(i)(&quot;room&quot;).ToString}]" DataTable="[dtaFinalList]" DisplayName="add_work_shift" sap:VirtualizedContainerService.HintSize="262,22" sap2010:WorkflowViewState.IdRef="AddDataRow_22" />
+                                  <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_18">
+                                    <Assign.To>
+                                      <OutArgument x:TypeArguments="x:Int32">[intCount]</OutArgument>
+                                    </Assign.To>
+                                    <Assign.Value>
+                                      <InArgument x:TypeArguments="x:Int32">0</InArgument>
+                                    </Assign.Value>
+                                  </Assign>
+                                </Sequence>
+                              </If.Then>
+                            </If>
+                          </Sequence>
+                        </If.Else>
+                      </If>
+                    </Sequence>
+                  </ActivityAction>
+                </ui:ForEach.Body>
+              </ui:ForEach>
+              <ui:ForEach x:TypeArguments="x:Int32" CurrentIndex="{x:Null}" x:Key="4" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="876,1230" sap2010:WorkflowViewState.IdRef="ForEach`1_7" Values="[Enumerable.Range(0,dtaAuxiliary.rows.Count)]">
+                <ui:ForEach.Body>
+                  <ActivityAction x:TypeArguments="x:Int32">
+                    <ActivityAction.Argument>
+                      <DelegateInArgument x:TypeArguments="x:Int32" Name="i" />
+                    </ActivityAction.Argument>
+                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="840,1096" sap2010:WorkflowViewState.IdRef="Sequence_36">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <If Condition="[i = 0]" sap:VirtualizedContainerService.HintSize="798,1004" sap2010:WorkflowViewState.IdRef="If_19">
+                        <If.Else>
+                          <Sequence sap:VirtualizedContainerService.HintSize="653,856" sap2010:WorkflowViewState.IdRef="Sequence_35">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <If Condition="[Cint(dtaAuxiliary.rows(i)(&quot;worker&quot;)) = Cint(dtaAuxiliary.rows(i-1)(&quot;worker&quot;)) and Cint(dtaAuxiliary.Rows(i)(&quot;day&quot;)) = Cint(dtaAuxiliary.Rows(i-1)(&quot;day&quot;))+1]" sap:VirtualizedContainerService.HintSize="611,362" sap2010:WorkflowViewState.IdRef="If_17">
+                              <If.Then>
+                                <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_19">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:Int32">[intCount]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:Int32">[intCount + 1]</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                              </If.Then>
+                              <If.Else>
+                                <Sequence sap:VirtualizedContainerService.HintSize="304,214" sap2010:WorkflowViewState.IdRef="Sequence_33">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{&quot;UT3&quot;,(Cint(dtaAuxiliary.rows(i-1)(&quot;day&quot;))+1-intCount).ToString + &quot;/&quot; + date.Now.AddMonths(2).ToString(&quot;MMM&quot;),(Cint(dtaAuxiliary.rows(i-1)(&quot;day&quot;))+1).ToString + &quot;/&quot; + date.now.AddMonths(2).ToString(&quot;MMM&quot;),dtaAuxiliary.rows(i-1)(&quot;name&quot;).ToString,dtaAuxiliary.rows(i-1)(&quot;office&quot;).ToString,dtaAuxiliary.rows(i-1)(&quot;room&quot;).ToString}]" DataTable="[dtaFinalList]" DisplayName="add_work_shift" sap:VirtualizedContainerService.HintSize="262,22" sap2010:WorkflowViewState.IdRef="AddDataRow_23" />
+                                  <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_20">
+                                    <Assign.To>
+                                      <OutArgument x:TypeArguments="x:Int32">[intCount]</OutArgument>
+                                    </Assign.To>
+                                    <Assign.Value>
+                                      <InArgument x:TypeArguments="x:Int32">0</InArgument>
+                                    </Assign.Value>
+                                  </Assign>
+                                </Sequence>
+                              </If.Else>
+                            </If>
+                            <If Condition="[i = dtaAuxiliary.rows.Count-1 and Cint(dtaAuxiliary.rows(i)(&quot;worker&quot;)) = Cint(dtaAuxiliary.rows(i-1)(&quot;worker&quot;)) and Cint(dtaAuxiliary.Rows(i)(&quot;day&quot;)) = Cint(dtaAuxiliary.Rows(i-1)(&quot;day&quot;))+1]" sap:VirtualizedContainerService.HintSize="611,362" sap2010:WorkflowViewState.IdRef="If_18">
+                              <If.Then>
+                                <Sequence sap:VirtualizedContainerService.HintSize="304,214" sap2010:WorkflowViewState.IdRef="Sequence_34">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{&quot;UT3&quot;,(Cint(dtaAuxiliary.rows(i-1)(&quot;day&quot;))+1-intCount).ToString + &quot;/&quot; + date.Now.AddMonths(2).ToString(&quot;MMM&quot;),(Cint(dtaAuxiliary.rows(i)(&quot;day&quot;))+1).ToString + &quot;/&quot; + date.now.AddMonths(2).ToString(&quot;MMM&quot;),dtaAuxiliary.rows(i)(&quot;name&quot;).ToString,dtaAuxiliary.rows(i)(&quot;office&quot;).ToString,dtaAuxiliary.rows(i)(&quot;room&quot;).ToString}]" DataTable="[dtaFinalList]" DisplayName="add_work_shift" sap:VirtualizedContainerService.HintSize="262,22" sap2010:WorkflowViewState.IdRef="AddDataRow_24" />
+                                  <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_21">
+                                    <Assign.To>
+                                      <OutArgument x:TypeArguments="x:Int32">[intCount]</OutArgument>
+                                    </Assign.To>
+                                    <Assign.Value>
+                                      <InArgument x:TypeArguments="x:Int32">0</InArgument>
+                                    </Assign.Value>
+                                  </Assign>
+                                </Sequence>
+                              </If.Then>
+                            </If>
+                          </Sequence>
+                        </If.Else>
+                      </If>
+                    </Sequence>
+                  </ActivityAction>
+                </ui:ForEach.Body>
+              </ui:ForEach>
+              <ui:ForEach x:TypeArguments="x:Int32" CurrentIndex="{x:Null}" x:Key="5" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="876,1230" sap2010:WorkflowViewState.IdRef="ForEach`1_8" Values="[Enumerable.Range(0,dtaAuxiliary.rows.Count)]">
+                <ui:ForEach.Body>
+                  <ActivityAction x:TypeArguments="x:Int32">
+                    <ActivityAction.Argument>
+                      <DelegateInArgument x:TypeArguments="x:Int32" Name="i" />
+                    </ActivityAction.Argument>
+                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="840,1096" sap2010:WorkflowViewState.IdRef="Sequence_40">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <If Condition="[i = 0]" sap:VirtualizedContainerService.HintSize="798,1004" sap2010:WorkflowViewState.IdRef="If_22">
+                        <If.Else>
+                          <Sequence sap:VirtualizedContainerService.HintSize="653,856" sap2010:WorkflowViewState.IdRef="Sequence_39">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <If Condition="[Cint(dtaAuxiliary.rows(i)(&quot;worker&quot;)) = Cint(dtaAuxiliary.rows(i-1)(&quot;worker&quot;)) and Cint(dtaAuxiliary.Rows(i)(&quot;day&quot;)) = Cint(dtaAuxiliary.Rows(i-1)(&quot;day&quot;))+1]" sap:VirtualizedContainerService.HintSize="611,362" sap2010:WorkflowViewState.IdRef="If_20">
+                              <If.Then>
+                                <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_22">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:Int32">[intCount]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:Int32">[intCount + 1]</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                              </If.Then>
+                              <If.Else>
+                                <Sequence sap:VirtualizedContainerService.HintSize="304,214" sap2010:WorkflowViewState.IdRef="Sequence_37">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{&quot;UT4&quot;,(Cint(dtaAuxiliary.rows(i-1)(&quot;day&quot;))+1-intCount).ToString + &quot;/&quot; + date.Now.AddMonths(2).ToString(&quot;MMM&quot;),(Cint(dtaAuxiliary.rows(i-1)(&quot;day&quot;))+1).ToString + &quot;/&quot; + date.now.AddMonths(2).ToString(&quot;MMM&quot;),dtaAuxiliary.rows(i-1)(&quot;name&quot;).ToString,dtaAuxiliary.rows(i-1)(&quot;office&quot;).ToString,dtaAuxiliary.rows(i-1)(&quot;room&quot;).ToString}]" DataTable="[dtaFinalList]" DisplayName="add_work_shift" sap:VirtualizedContainerService.HintSize="262,22" sap2010:WorkflowViewState.IdRef="AddDataRow_25" />
+                                  <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_23">
+                                    <Assign.To>
+                                      <OutArgument x:TypeArguments="x:Int32">[intCount]</OutArgument>
+                                    </Assign.To>
+                                    <Assign.Value>
+                                      <InArgument x:TypeArguments="x:Int32">0</InArgument>
+                                    </Assign.Value>
+                                  </Assign>
+                                </Sequence>
+                              </If.Else>
+                            </If>
+                            <If Condition="[i = dtaAuxiliary.rows.Count-1 and Cint(dtaAuxiliary.rows(i)(&quot;worker&quot;)) = Cint(dtaAuxiliary.rows(i-1)(&quot;worker&quot;)) and Cint(dtaAuxiliary.Rows(i)(&quot;day&quot;)) = Cint(dtaAuxiliary.Rows(i-1)(&quot;day&quot;))+1]" sap:VirtualizedContainerService.HintSize="611,362" sap2010:WorkflowViewState.IdRef="If_21">
+                              <If.Then>
+                                <Sequence sap:VirtualizedContainerService.HintSize="304,214" sap2010:WorkflowViewState.IdRef="Sequence_38">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{&quot;UT4&quot;,(Cint(dtaAuxiliary.rows(i-1)(&quot;day&quot;))+1-intCount).ToString + &quot;/&quot; + date.Now.AddMonths(2).ToString(&quot;MMM&quot;),(Cint(dtaAuxiliary.rows(i)(&quot;day&quot;))+1).ToString + &quot;/&quot; + date.now.AddMonths(2).ToString(&quot;MMM&quot;),dtaAuxiliary.rows(i)(&quot;name&quot;).ToString,dtaAuxiliary.rows(i)(&quot;office&quot;).ToString,dtaAuxiliary.rows(i)(&quot;room&quot;).ToString}]" DataTable="[dtaFinalList]" DisplayName="add_work_shift" sap:VirtualizedContainerService.HintSize="262,22" sap2010:WorkflowViewState.IdRef="AddDataRow_26" />
+                                  <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_24">
+                                    <Assign.To>
+                                      <OutArgument x:TypeArguments="x:Int32">[intCount]</OutArgument>
+                                    </Assign.To>
+                                    <Assign.Value>
+                                      <InArgument x:TypeArguments="x:Int32">0</InArgument>
+                                    </Assign.Value>
+                                  </Assign>
+                                </Sequence>
+                              </If.Then>
+                            </If>
+                          </Sequence>
+                        </If.Else>
+                      </If>
+                    </Sequence>
+                  </ActivityAction>
+                </ui:ForEach.Body>
+              </ui:ForEach>
+              <ui:ForEach x:TypeArguments="x:Int32" CurrentIndex="{x:Null}" x:Key="6" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="876,1230" sap2010:WorkflowViewState.IdRef="ForEach`1_9" Values="[Enumerable.Range(0,dtaAuxiliary.rows.Count)]">
+                <ui:ForEach.Body>
+                  <ActivityAction x:TypeArguments="x:Int32">
+                    <ActivityAction.Argument>
+                      <DelegateInArgument x:TypeArguments="x:Int32" Name="i" />
+                    </ActivityAction.Argument>
+                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="840,1096" sap2010:WorkflowViewState.IdRef="Sequence_44">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <If Condition="[i = 0]" sap:VirtualizedContainerService.HintSize="798,1004" sap2010:WorkflowViewState.IdRef="If_25">
+                        <If.Else>
+                          <Sequence sap:VirtualizedContainerService.HintSize="653,856" sap2010:WorkflowViewState.IdRef="Sequence_43">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <If Condition="[Cint(dtaAuxiliary.rows(i)(&quot;worker&quot;)) = Cint(dtaAuxiliary.rows(i-1)(&quot;worker&quot;)) and Cint(dtaAuxiliary.Rows(i)(&quot;day&quot;)) = Cint(dtaAuxiliary.Rows(i-1)(&quot;day&quot;))+1]" sap:VirtualizedContainerService.HintSize="611,362" sap2010:WorkflowViewState.IdRef="If_23">
+                              <If.Then>
+                                <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_25">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:Int32">[intCount]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:Int32">[intCount + 1]</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                              </If.Then>
+                              <If.Else>
+                                <Sequence sap:VirtualizedContainerService.HintSize="304,214" sap2010:WorkflowViewState.IdRef="Sequence_41">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{&quot;VST&quot;,(Cint(dtaAuxiliary.rows(i-1)(&quot;day&quot;))+1-intCount).ToString + &quot;/&quot; + date.Now.AddMonths(2).ToString(&quot;MMM&quot;),(Cint(dtaAuxiliary.rows(i-1)(&quot;day&quot;))+1).ToString + &quot;/&quot; + date.now.AddMonths(2).ToString(&quot;MMM&quot;),dtaAuxiliary.rows(i-1)(&quot;name&quot;).ToString,dtaAuxiliary.rows(i-1)(&quot;office&quot;).ToString,dtaAuxiliary.rows(i-1)(&quot;room&quot;).ToString}]" DataTable="[dtaFinalList]" DisplayName="add_work_shift" sap:VirtualizedContainerService.HintSize="262,22" sap2010:WorkflowViewState.IdRef="AddDataRow_27" />
+                                  <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_26">
+                                    <Assign.To>
+                                      <OutArgument x:TypeArguments="x:Int32">[intCount]</OutArgument>
+                                    </Assign.To>
+                                    <Assign.Value>
+                                      <InArgument x:TypeArguments="x:Int32">0</InArgument>
+                                    </Assign.Value>
+                                  </Assign>
+                                </Sequence>
+                              </If.Else>
+                            </If>
+                            <If Condition="[i = dtaAuxiliary.rows.Count-1 and Cint(dtaAuxiliary.rows(i)(&quot;worker&quot;)) = Cint(dtaAuxiliary.rows(i-1)(&quot;worker&quot;)) and Cint(dtaAuxiliary.Rows(i)(&quot;day&quot;)) = Cint(dtaAuxiliary.Rows(i-1)(&quot;day&quot;))+1]" sap:VirtualizedContainerService.HintSize="611,362" sap2010:WorkflowViewState.IdRef="If_24">
+                              <If.Then>
+                                <Sequence sap:VirtualizedContainerService.HintSize="304,214" sap2010:WorkflowViewState.IdRef="Sequence_42">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{&quot;VST&quot;,(Cint(dtaAuxiliary.rows(i-1)(&quot;day&quot;))+1-intCount).ToString + &quot;/&quot; + date.Now.AddMonths(2).ToString(&quot;MMM&quot;),(Cint(dtaAuxiliary.rows(i)(&quot;day&quot;))+1).ToString + &quot;/&quot; + date.now.AddMonths(2).ToString(&quot;MMM&quot;),dtaAuxiliary.rows(i)(&quot;name&quot;).ToString,dtaAuxiliary.rows(i)(&quot;office&quot;).ToString,dtaAuxiliary.rows(i)(&quot;room&quot;).ToString}]" DataTable="[dtaFinalList]" DisplayName="add_work_shift" sap:VirtualizedContainerService.HintSize="262,22" sap2010:WorkflowViewState.IdRef="AddDataRow_28" />
+                                  <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_27">
+                                    <Assign.To>
+                                      <OutArgument x:TypeArguments="x:Int32">[intCount]</OutArgument>
+                                    </Assign.To>
+                                    <Assign.Value>
+                                      <InArgument x:TypeArguments="x:Int32">0</InArgument>
+                                    </Assign.Value>
+                                  </Assign>
+                                </Sequence>
+                              </If.Then>
+                            </If>
+                          </Sequence>
+                        </If.Else>
+                      </If>
+                    </Sequence>
+                  </ActivityAction>
+                </ui:ForEach.Body>
+              </ui:ForEach>
+              <ui:ForEach x:TypeArguments="x:Int32" CurrentIndex="{x:Null}" x:Key="7" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="876,1230" sap2010:WorkflowViewState.IdRef="ForEach`1_10" Values="[Enumerable.Range(0,dtaAuxiliary.rows.Count)]">
+                <ui:ForEach.Body>
+                  <ActivityAction x:TypeArguments="x:Int32">
+                    <ActivityAction.Argument>
+                      <DelegateInArgument x:TypeArguments="x:Int32" Name="i" />
+                    </ActivityAction.Argument>
+                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="840,1096" sap2010:WorkflowViewState.IdRef="Sequence_48">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <If Condition="[i = 0]" sap:VirtualizedContainerService.HintSize="798,1004" sap2010:WorkflowViewState.IdRef="If_28">
+                        <If.Else>
+                          <Sequence sap:VirtualizedContainerService.HintSize="653,856" sap2010:WorkflowViewState.IdRef="Sequence_47">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <If Condition="[Cint(dtaAuxiliary.rows(i)(&quot;worker&quot;)) = Cint(dtaAuxiliary.rows(i-1)(&quot;worker&quot;)) and Cint(dtaAuxiliary.Rows(i)(&quot;day&quot;)) = Cint(dtaAuxiliary.Rows(i-1)(&quot;day&quot;))+1]" sap:VirtualizedContainerService.HintSize="611,362" sap2010:WorkflowViewState.IdRef="If_26">
+                              <If.Then>
+                                <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_28">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:Int32">[intCount]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:Int32">[intCount + 1]</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                              </If.Then>
+                              <If.Else>
+                                <Sequence sap:VirtualizedContainerService.HintSize="304,214" sap2010:WorkflowViewState.IdRef="Sequence_45">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{&quot;VISTA&quot;,(Cint(dtaAuxiliary.rows(i-1)(&quot;day&quot;))+1-intCount).ToString + &quot;/&quot; + date.Now.AddMonths(2).ToString(&quot;MMM&quot;),(Cint(dtaAuxiliary.rows(i-1)(&quot;day&quot;))+1).ToString + &quot;/&quot; + date.now.AddMonths(2).ToString(&quot;MMM&quot;),dtaAuxiliary.rows(i-1)(&quot;name&quot;).ToString,dtaAuxiliary.rows(i-1)(&quot;office&quot;).ToString,dtaAuxiliary.rows(i-1)(&quot;room&quot;).ToString}]" DataTable="[dtaFinalList]" DisplayName="add_work_shift" sap:VirtualizedContainerService.HintSize="262,22" sap2010:WorkflowViewState.IdRef="AddDataRow_29" />
+                                  <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_29">
+                                    <Assign.To>
+                                      <OutArgument x:TypeArguments="x:Int32">[intCount]</OutArgument>
+                                    </Assign.To>
+                                    <Assign.Value>
+                                      <InArgument x:TypeArguments="x:Int32">0</InArgument>
+                                    </Assign.Value>
+                                  </Assign>
+                                </Sequence>
+                              </If.Else>
+                            </If>
+                            <If Condition="[i = dtaAuxiliary.rows.Count-1 and Cint(dtaAuxiliary.rows(i)(&quot;worker&quot;)) = Cint(dtaAuxiliary.rows(i-1)(&quot;worker&quot;)) and Cint(dtaAuxiliary.Rows(i)(&quot;day&quot;)) = Cint(dtaAuxiliary.Rows(i-1)(&quot;day&quot;))+1]" sap:VirtualizedContainerService.HintSize="611,362" sap2010:WorkflowViewState.IdRef="If_27">
+                              <If.Then>
+                                <Sequence sap:VirtualizedContainerService.HintSize="304,214" sap2010:WorkflowViewState.IdRef="Sequence_46">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{&quot;VISTA&quot;,(Cint(dtaAuxiliary.rows(i-1)(&quot;day&quot;))+1-intCount).ToString + &quot;/&quot; + date.Now.AddMonths(2).ToString(&quot;MMM&quot;),(Cint(dtaAuxiliary.rows(i)(&quot;day&quot;))+1).ToString + &quot;/&quot; + date.now.AddMonths(2).ToString(&quot;MMM&quot;),dtaAuxiliary.rows(i)(&quot;name&quot;).ToString,dtaAuxiliary.rows(i)(&quot;office&quot;).ToString,dtaAuxiliary.rows(i)(&quot;room&quot;).ToString}]" DataTable="[dtaFinalList]" DisplayName="add_work_shift" sap:VirtualizedContainerService.HintSize="262,22" sap2010:WorkflowViewState.IdRef="AddDataRow_30" />
+                                  <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_30">
+                                    <Assign.To>
+                                      <OutArgument x:TypeArguments="x:Int32">[intCount]</OutArgument>
+                                    </Assign.To>
+                                    <Assign.Value>
+                                      <InArgument x:TypeArguments="x:Int32">0</InArgument>
+                                    </Assign.Value>
+                                  </Assign>
+                                </Sequence>
+                              </If.Then>
+                            </If>
+                          </Sequence>
+                        </If.Else>
+                      </If>
+                    </Sequence>
+                  </ActivityAction>
+                </ui:ForEach.Body>
+              </ui:ForEach>
+              <ui:ForEach x:TypeArguments="x:Int32" CurrentIndex="{x:Null}" x:Key="8" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="876,1230" sap2010:WorkflowViewState.IdRef="ForEach`1_11" Values="[Enumerable.Range(0,dtaAuxiliary.rows.Count)]">
+                <ui:ForEach.Body>
+                  <ActivityAction x:TypeArguments="x:Int32">
+                    <ActivityAction.Argument>
+                      <DelegateInArgument x:TypeArguments="x:Int32" Name="i" />
+                    </ActivityAction.Argument>
+                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="840,1096" sap2010:WorkflowViewState.IdRef="Sequence_52">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <If Condition="[i = 0]" sap:VirtualizedContainerService.HintSize="798,1004" sap2010:WorkflowViewState.IdRef="If_31">
+                        <If.Else>
+                          <Sequence sap:VirtualizedContainerService.HintSize="653,856" sap2010:WorkflowViewState.IdRef="Sequence_51">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <If Condition="[Cint(dtaAuxiliary.rows(i)(&quot;worker&quot;)) = Cint(dtaAuxiliary.rows(i-1)(&quot;worker&quot;)) and Cint(dtaAuxiliary.Rows(i)(&quot;day&quot;)) = Cint(dtaAuxiliary.Rows(i-1)(&quot;day&quot;))+1]" sap:VirtualizedContainerService.HintSize="611,362" sap2010:WorkflowViewState.IdRef="If_29">
+                              <If.Then>
+                                <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_31">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:Int32">[intCount]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:Int32">[intCount + 1]</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                              </If.Then>
+                              <If.Else>
+                                <Sequence sap:VirtualizedContainerService.HintSize="304,214" sap2010:WorkflowViewState.IdRef="Sequence_49">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{&quot;VLTI&quot;,(Cint(dtaAuxiliary.rows(i-1)(&quot;day&quot;))+1-intCount).ToString + &quot;/&quot; + date.Now.AddMonths(2).ToString(&quot;MMM&quot;),(Cint(dtaAuxiliary.rows(i-1)(&quot;day&quot;))+1).ToString + &quot;/&quot; + date.now.AddMonths(2).ToString(&quot;MMM&quot;),dtaAuxiliary.rows(i-1)(&quot;name&quot;).ToString,dtaAuxiliary.rows(i-1)(&quot;office&quot;).ToString,dtaAuxiliary.rows(i-1)(&quot;room&quot;).ToString}]" DataTable="[dtaFinalList]" DisplayName="add_work_shift" sap:VirtualizedContainerService.HintSize="262,22" sap2010:WorkflowViewState.IdRef="AddDataRow_31" />
+                                  <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_32">
+                                    <Assign.To>
+                                      <OutArgument x:TypeArguments="x:Int32">[intCount]</OutArgument>
+                                    </Assign.To>
+                                    <Assign.Value>
+                                      <InArgument x:TypeArguments="x:Int32">0</InArgument>
+                                    </Assign.Value>
+                                  </Assign>
+                                </Sequence>
+                              </If.Else>
+                            </If>
+                            <If Condition="[i = dtaAuxiliary.rows.Count-1 and Cint(dtaAuxiliary.rows(i)(&quot;worker&quot;)) = Cint(dtaAuxiliary.rows(i-1)(&quot;worker&quot;)) and Cint(dtaAuxiliary.Rows(i)(&quot;day&quot;)) = Cint(dtaAuxiliary.Rows(i-1)(&quot;day&quot;))+1]" sap:VirtualizedContainerService.HintSize="611,362" sap2010:WorkflowViewState.IdRef="If_30">
+                              <If.Then>
+                                <Sequence sap:VirtualizedContainerService.HintSize="304,214" sap2010:WorkflowViewState.IdRef="Sequence_50">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{&quot;VLTI&quot;,(Cint(dtaAuxiliary.rows(i-1)(&quot;day&quot;))+1-intCount).ToString + &quot;/&quot; + date.Now.AddMonths(2).ToString(&quot;MMM&quot;),(Cint(dtaAuxiliary.rows(i)(&quot;day&quot;))+1).ToString + &quot;/&quot; + date.now.AddMonths(2).ToString(&quot;MMM&quot;),dtaAuxiliary.rows(i)(&quot;name&quot;).ToString,dtaAuxiliary.rows(i)(&quot;office&quot;).ToString,dtaAuxiliary.rows(i)(&quot;room&quot;).ToString}]" DataTable="[dtaFinalList]" DisplayName="add_work_shift" sap:VirtualizedContainerService.HintSize="262,22" sap2010:WorkflowViewState.IdRef="AddDataRow_32" />
+                                  <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_33">
+                                    <Assign.To>
+                                      <OutArgument x:TypeArguments="x:Int32">[intCount]</OutArgument>
+                                    </Assign.To>
+                                    <Assign.Value>
+                                      <InArgument x:TypeArguments="x:Int32">0</InArgument>
+                                    </Assign.Value>
+                                  </Assign>
+                                </Sequence>
+                              </If.Then>
+                            </If>
+                          </Sequence>
+                        </If.Else>
+                      </If>
+                    </Sequence>
+                  </ActivityAction>
+                </ui:ForEach.Body>
+              </ui:ForEach>
+            </Switch>
+            <ui:ClearDataTable DataTable="[dtaAuxiliary]" DisplayName="Clear Data Table" sap:VirtualizedContainerService.HintSize="958,22" sap2010:WorkflowViewState.IdRef="ClearDataTable_1" />
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEach.Body>
+    </ui:ForEach>
+    <ui:Delete ContinueOnError="True" sap:VirtualizedContainerService.HintSize="1036,22" sap2010:WorkflowViewState.IdRef="Delete_1" Path="C:\Users\bcerda\Documents\UiPath\p001_asignación_de_roles\out\test.xlsx" />
+    <ui:WriteRange AddHeaders="True" DataTable="[dtaFinalList]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="1036,115" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="base" StartingCell="A1" WorkbookPath="C:\Users\bcerda\Documents\UiPath\p001_asignación_de_roles\out\test.xlsx" />
+    <ui:AppendRange DataTable="[dtaRoleList]" DisplayName="Append Range" sap:VirtualizedContainerService.HintSize="1036,115" sap2010:WorkflowViewState.IdRef="AppendRange_1" SheetName="base" WorkbookPath="C:\Users\bcerda\Documents\UiPath\p001_asignación_de_roles\out\test.xlsx" />
+    <ui:ReadRange AddHeaders="True" DataTable="[dtaMail]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="1036,87" sap2010:WorkflowViewState.IdRef="ReadRange_5" SheetName="base" WorkbookPath="C:\Users\bcerda\Documents\UiPath\p001_asignación_de_roles\out\test.xlsx">
+      <ui:ReadRange.Range>
+        <InArgument x:TypeArguments="x:String">
+          <Literal x:TypeArguments="x:String" Value="" />
+        </InArgument>
+      </ui:ReadRange.Range>
+    </ui:ReadRange>
+    <ui:ReadTextFile Content="[strMailBody]" DisplayName="Read Text File" FileName="rsc\inputs\mail_wrapper.txt" sap:VirtualizedContainerService.HintSize="1036,79" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
+    <Assign sap:VirtualizedContainerService.HintSize="1036,60" sap2010:WorkflowViewState.IdRef="Assign_34">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[strHtmlTable]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">
+          <Literal x:TypeArguments="x:String" Value="" />
+        </InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[dtaMail]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="1036,208" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
+      <ui:ForEachRow.Body>
+        <ActivityAction x:TypeArguments="sd:DataRow">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+          </ActivityAction.Argument>
+          <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_35">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[strHtmlTable]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[strHtmlTable+"&lt;tr&gt;&lt;td&gt;"+row("role").ToString+"&lt;/td&gt;&lt;td&gt;"+row("start_date").ToString+"&lt;/td&gt;&lt;td&gt;"+row("end_date").ToString+"&lt;/td&gt;&lt;td&gt;"+row("name").ToString+"&lt;/td&gt;&lt;td&gt;"+row("office").ToString+"&lt;/td&gt;&lt;td&gt;"+row("room").ToString+"&lt;/td&gt;&lt;/tr&gt;"]</InArgument>
+            </Assign.Value>
+          </Assign>
+        </ActivityAction>
+      </ui:ForEachRow.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:ForEachRow>
+    <ui:WriteTextFile DisplayName="Write Text File" FileName="test.txt" sap:VirtualizedContainerService.HintSize="1036,132" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[strHtmlTable]" />
+    <Assign sap:VirtualizedContainerService.HintSize="1036,60" sap2010:WorkflowViewState.IdRef="Assign_36">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[strMailBody]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[String.Format(strMailBody,strHtmlTable)]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" TimeoutMS="{x:Null}" Body="[strMailBody]" DisplayName="Send SMTP Mail Message" Email="maximiliano.escobar@sisuadigital.com" EnableSSL="True" sap:VirtualizedContainerService.HintSize="1036,145" sap2010:WorkflowViewState.IdRef="SendMail_1" IsBodyHtml="True" Password="M168f223?" Port="587" SecureConnection="StartTls" Server="smtp.office365.com" Subject="[&quot;Role list  - Month: &quot;+ date.Now.addMonths(2).ToString(&quot;MMMM&quot;)]" To="maximiliano.escobar@sisuadigital.com; benjamin.cerda@sisuadigital.com">
+      <ui:SendMail.Files>
+        <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
+      </ui:SendMail.Files>
+    </ui:SendMail>
+  </Sequence>
+</Activity>

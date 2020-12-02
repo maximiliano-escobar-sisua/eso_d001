@@ -1,0 +1,13 @@
+{"machine":"x.y.z.w",
+"service_mode":"10",
+"system":"1100",
+"version":"2020.4.3",
+"sisua_contact":"pablo.diaz",
+"client_contact":"jane.doe",
+"framework_version":"standalone_v2.0",
+"environment":"10",
+"start_time":"2020-08-03 14:52:05",
+"end_time":"2020-08-03 14:52:13",
+"accumulated_exceptions":[],
+"accumulated_retries":0,
+"result_code":"10000"}
